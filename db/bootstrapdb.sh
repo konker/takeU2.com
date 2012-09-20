@@ -33,7 +33,8 @@ echo "create database $1_test..."
 echo "Enter the password for the user 'postgres'"
 createdb --username=postgres --password --owner=$1 --encoding=utf8 "$1_test"
 
-echo
-echo "create database $1_production..."
-echo "Enter the password for the user 'postgres'"
-createdb --username=postgres --password --owner=$1 --encoding=utf8 "$1_production"
+# echo
+# echo "create database $1_production..."
+# echo "Enter the password for the user 'postgres'"
+# createdb --username=postgres --password --owner=$1 --encoding=utf8 "$1_production"
+
