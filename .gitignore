@@ -7,8 +7,8 @@ capybara-*.html
 /vendor/bundle
 /log/*
 /tmp/*
-/config/config.rb
-/config/environments/config.*.rb
+/config/config.yml
+/config/environments/config.*.yml
 /db/*.sqlite3
 /public/system/*
 /coverage/
