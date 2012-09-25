@@ -1,1 +1,2 @@
-config.foo: 'FOO (dev)'
+config:
+  foo: 'FOO (dev)'

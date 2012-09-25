@@ -1,1 +1,2 @@
-config.foo: 'FOO (prod)'
+config:
+  foo: 'FOO (prod)'
