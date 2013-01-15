@@ -11,30 +11,37 @@
 #     change the method for user postgres from 'peer' -> 'md5'
 #     reload the server
 
+HOST=localhost
+
 if [ -z "$1" ]; then
     echo "no name specified. aborting."
     exit 1
+fi
+
+PG_USER=postgres
+if [ ! -z "$2" ]; then
+    PG_USER="$2"
 fi
 
 echo
 echo "create user $1..." 
 echo "First enter the password for the new role '$1'"
 echo "Then re-enter the password for the new role '$1'"
-echo "Then enter the password for the user 'postgres'"
-createuser --username=postgres --password --no-createdb --no-superuser --no-createrole --pwprompt $1
+echo "Then enter the password for the user '$PG_USER'"
+createuser --host=$HOST --username=$PG_USER --password --no-createdb --no-superuser --no-createrole --pwprompt $1
 
 echo
 echo "create database $1_development..."
-echo "Enter the password for the user 'postgres'"
-createdb --username=postgres --password --owner=$1 --encoding=utf8 "$1_development"
+echo "Enter the password for the user '$PG_USER'"
+createdb --host=$HOST --username=$PG_USER --password --owner=$1 --encoding=utf8 "$1_development"
 
 echo
 echo "create database $1_test..."
-echo "Enter the password for the user 'postgres'"
-createdb --username=postgres --password --owner=$1 --encoding=utf8 "$1_test"
+echo "Enter the password for the user '$PG_USER'"
+createdb --host=$HOST --username=$PG_USER --password --owner=$1 --encoding=utf8 "$1_test"
 
 # echo
 # echo "create database $1_production..."
-# echo "Enter the password for the user 'postgres'"
-# createdb --username=postgres --password --owner=$1 --encoding=utf8 "$1_production"
+# echo "Enter the password for the user '$PG_USER'"
+# createdb --host=$HOST --username=$PG_USER --password --owner=$1 --encoding=utf8 "$1_production"
 
